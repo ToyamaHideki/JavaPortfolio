@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bookkeeping_db
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      mode: always # 起動時に毎回SQLを実行する設定
+      data-locations: classpath:data.sql #起動時の投入データ先を指定
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    mapper-locations: classpath:mapper/*.xml

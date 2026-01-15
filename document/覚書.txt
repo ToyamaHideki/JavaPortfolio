@@ -1,0 +1,8 @@
+Dockerの起動方法
+cd C:\Users\toyam\デスクトップ\JavaPortfolio
+
+# DBをバックグラウンドで起動
+docker compose up -d
+
+# 起動状態を確認
+docker compose ps

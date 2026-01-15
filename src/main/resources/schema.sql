@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE, -- ここに UNIQUE を追加
+    password VARCHAR(100) NOT NULL,
+    role VARCHAR(20) NOT NULL,
+    email VARCHAR(100)
+);
