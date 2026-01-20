@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ユーザー詳細</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; line-height: 1.6; }
+        .user-card { border: 1px solid #ddd; padding: 20px; border-radius: 8px; max-width: 400px; }
+        .label { font-weight: bold; color: #555; }
+    </style>
+</head>
+<body>
+
+<h1>ユーザー詳細情報</h1>
+
+<div class="user-card">
+    <p><span class="label">ID:</span> <span th:text="${user.id}">1</span></p>
+    <p><span class="label">ユーザー名:</span> <span th:text="${user.username}">名前が入ります</span></p>
+    <p><span class="label">メールアドレス:</span> <span th:text="${user.email}">email@example.com</span></p>
+    <p><span class="label">権限:</span> <span th:text="${user.role}">ROLE_USER</span></p>
+</div>
+
+<br>
+<a href="/user/list">ユーザー一覧に戻る（未実装）</a>
+
+</body>
+</html>

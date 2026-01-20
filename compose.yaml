@@ -1,6 +1,6 @@
 services:
   db:
-    image: 'postgres:latest'
+    image: 'postgres:16'
     environment:
       - 'POSTGRES_DB=bookkeeping_db'
       - 'POSTGRES_PASSWORD=password'
@@ -8,6 +8,11 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - './db-data:/var/lib/postgresql/data'
-      - './src/main/resources/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql'
-      - './src/main/resources/data.sql:/docker-entrypoint-initdb.d/02_data.sql'
+      # 名前付きボリュームに変更（エラーが起きにくい）
+      - db_data:/var/lib/postgresql/data
+      # SQLの自動実行。パスが正しいか再確認してください
+      - ./src/main/resources/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+      - ./src/main/resources/data.sql:/docker-entrypoint-initdb.d/02_data.sql
+
+volumes:
+  db_data:
