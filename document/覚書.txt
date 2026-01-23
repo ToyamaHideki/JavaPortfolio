@@ -1,4 +1,5 @@
 Dockerの起動方法
+Docker Desktopの起動
 cd C:\Users\toyam\デスクトップ\JavaPortfolio
 
 # DBをバックグラウンドで起動
@@ -6,3 +7,39 @@ docker compose up -d
 
 # 起動状態を確認
 docker compose ps
+
+
+Docker　テーブルの状態をリセットする(テーブル構造など変更した時に実施)
+# 一度コンテナとボリューム（データ）を全削除して、真っさらにします
+docker compose down -v
+# 再び起動
+docker compose up -d
+
+
+
+
+
+
+
+以下、3つの状態の違いを覚えておく
+
+1. Dockerを「停止」した場合（docker compose stop）
+pgAdmin: 接続が切れるので、ツリーから消えたりエラーになったりします。
+データ: 無事です。
+再起動後: 前と同じ状態で復活します。
+
+2. コンテナを「削除」した場合（docker compose down）
+pgAdmin: 接続が切れます。
+データ: 無事です。 （compose.yaml で volumes の設定をしている場合、データは「ボリューム」という別の場所に保存されているためです）
+再起動後: docker compose up -d をすれば、前のデータが残った状態で立ち上がります。
+
+3. ボリュームごと「完全削除」した場合（docker compose down -v）
+pgAdmin: 接続が切れます。
+データ: ここで初めて削除されます。
+再起動後: まっさらな状態（テーブルがない状態）で立ち上がります。
+
+4.作業再開時に古いコンテナと競合した場合
+docker compose down --remove-orphans
+
+--remove-orphans
+エラーログに出ていた「古い不要なコンテナ」を綺麗に掃除できる。

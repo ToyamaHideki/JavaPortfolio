@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>家計簿アプリ - ホーム</title>
+</head>
+<body>
+<h1>家計簿ダッシュボード</h1>
+
+<p>こんにちは、<span th:text="${email}">ユーザー</span>さん！</p>
+<p>ログインに成功しました。</p>
+
+<hr>
+
+<form th:action="@{/logout}" method="post">
+    <button type="submit">ログアウト</button>
+</form>
+</body>
+</html>
+

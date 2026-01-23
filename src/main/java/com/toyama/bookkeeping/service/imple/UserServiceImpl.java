@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -23,7 +24,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(Long id) {
+    public User findById(UUID id) {
         // findById() が Optional<User> を返すので、.orElseThrow() で処理
         return userMapper.findById(id)
                 .orElseThrow(() -> new RuntimeException("指定されたユーザー(ID: " + id + ")は見つかりませんでした"));

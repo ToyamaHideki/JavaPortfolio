@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.UUID;
+
 @Controller
 @RequestMapping("/user")
 @RequiredArgsConstructor
@@ -18,7 +20,7 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/detail/{id}")
-    public String getUserDetail(@PathVariable("id") Long id, Model model) {
+    public String getUserDetail(@PathVariable("id") UUID id, Model model) {
         // DBからユーザー取得（UserMapperにfindByIdメソッドがある前提）
         var user = userService.findById(id);
 

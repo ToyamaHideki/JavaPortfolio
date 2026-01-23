@@ -1,27 +1,31 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>ユーザー詳細</title>
-    <style>
-        body { font-family: sans-serif; margin: 40px; line-height: 1.6; }
-        .user-card { border: 1px solid #ddd; padding: 20px; border-radius: 8px; max-width: 400px; }
-        .label { font-weight: bold; color: #555; }
-    </style>
 </head>
 <body>
+<h2>ユーザー詳細情報</h2>
+<dl>
+    <dt>ID (UUID):</dt>
+    <dd th:text="${user.id}"></dd>
 
-<h1>ユーザー詳細情報</h1>
+    <dt>ユーザー名:</dt>
+    <dd th:text="${user.username}"></dd>
 
-<div class="user-card">
-    <p><span class="label">ID:</span> <span th:text="${user.id}">1</span></p>
-    <p><span class="label">ユーザー名:</span> <span th:text="${user.username}">名前が入ります</span></p>
-    <p><span class="label">メールアドレス:</span> <span th:text="${user.email}">email@example.com</span></p>
-    <p><span class="label">権限:</span> <span th:text="${user.role}">ROLE_USER</span></p>
-</div>
+    <dt>メールアドレス:</dt>
+    <dd th:text="${user.email}"></dd>
 
-<br>
-<a href="/user/list">ユーザー一覧に戻る（未実装）</a>
+    <dt>権限:</dt>
+    <dd th:text="${user.role}"></dd>
 
+    <dt>有効ステータス:</dt>
+    <dd th:text="${user.isActive ? '有効' : '無効'}"></dd>
+
+    <dt>パートナー連携:</dt>
+    <dd th:text="${user.isPartnerLinked ? '連携済み' : '未連携'}"></dd>
+</dl>
+
+<a href="/user/list">一覧に戻る（未実装）</a>
 </body>
 </html>

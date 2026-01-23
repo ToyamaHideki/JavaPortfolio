@@ -11,5 +11,8 @@ spring:
 
 mybatis:
   configuration:
+  # スネークケース（db_column）をキャメルケース（javaField）に自動マッピング
+  # これがあれば、MyBatisがよしなに処理してくれて@Resultで補完が不要
     map-underscore-to-camel-case: true
-    mapper-locations: classpath:mapper/*.xml
+  # もしXMLを使わない（アノテーションのみ）なら、下の行はなくても動きます
+  mapper-locations: classpath:mapper/*.xml
