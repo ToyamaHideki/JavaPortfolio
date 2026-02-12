@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/layout :: head('ダッシュボード')}"></head>
+<body>
+<h1>ダッシュボード</h1>
+
+<p>ようこそ、<span th:text="${email}">ユーザー</span> さん</p>
+
+<hr>
+
+<h3>◆ 各種メニュー</h3>
+<ul>
+    <li>
+        <a th:href="@{/auth/detail}">登録内容照会/修正</a>
+    </li>
+
+    <li>
+        <a th:href="@{/transactions}">家計簿履歴（履歴の確認・登録）</a>
+    </li>
+
+    <li>
+        <a th:href="@{/trade-journal}">Trade Journal（FX過去検証記録）</a>
+    </li>
+</ul>
+
+<hr>
+
+<form th:action="@{/logout}" method="post">
+    <button type="submit">ログアウト</button>
+</form>
+</body>
+</html>

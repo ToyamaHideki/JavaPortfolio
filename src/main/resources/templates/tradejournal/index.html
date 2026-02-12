@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/layout :: head('トレード履歴一覧')}"></head>
+<body>
+<h1>トレード履歴一覧</h1>
+
+<div class="actions" style="margin-bottom: 20px;">
+    <a th:href="@{/trade-journal/create}" class="btn">新規トレード登録</a>
+</div>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>日時</th>
+        <th>通貨ペア</th>
+        <th>売買</th>
+        <th>損益(pips)</th>
+        <th>損益(金額)</th>
+        <th>詳細</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td colspan="6" style="text-align: center;">データがまだありません</td>
+    </tr>
+    </tbody>
+
+
+    <tbody>
+    <tr th:each="trade : ${trades}">
+        <td th:text="${#temporals.format(trade.entryAt, 'yyyy/MM/dd HH:mm')}">日時</td>
+        <td th:text="${trade.pair}">USD/JPY</td>
+        <td th:text="${trade.side}">BUY</td>
+        <td th:text="${trade.pips}">70.0</td>
+        <td th:text="${#numbers.formatInteger(trade.profitLoss, 1, 'COMMA')} + '円'">10,000円</td>
+        <td><a href="#">詳細</a></td>
+    </tr>
+    </tbody>
+
+
+</table>
+
+<hr>
+<a th:href="@{/dashboard}">ダッシュボードへ戻る</a>
+</body>
+</html>

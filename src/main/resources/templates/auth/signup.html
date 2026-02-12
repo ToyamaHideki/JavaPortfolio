@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/layout :: head('新規ユーザー登録')}"></head>
+<body>
+<h2>新規ユーザー登録</h2>
+<form th:action="@{/user/register}" method="post">
+    <div>
+        <label>ユーザー名:</label>
+        <input type="text" name="username" required>
+    </div>
+    <div>
+        <label>メールアドレス:</label>
+        <input type="email" name="email" required>
+    </div>
+    <div>
+        <label>パスワード:</label>
+        <input type="password" name="password" required>
+    </div>
+    <button type="submit">確認メールを送信</button>
+</form>
+<p><a th:href="@{/login}">ログイン画面へ戻る</a></p>
+</body>
+</html>

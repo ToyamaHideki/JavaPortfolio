@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/layout :: head('ログイン')}"></head>
+<body>
+<div style="max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
+    <h2>ログイン</h2>
+
+    <div th:if="${param.error}" style="color: red; margin-bottom: 15px;">
+        メールアドレスまたはパスワードが正しくありません。
+    </div>
+
+    <div th:if="${param.logout}" style="color: green; margin-bottom: 15px;">
+        ログアウトしました。
+    </div>
+
+    <form th:action="@{/login}" method="post">
+        <div style="margin-bottom: 10px;">
+            <label>メールアドレス:</label><br>
+            <input type="email" name="email" required style="width: 100%; padding: 8px;">
+        </div>
+        <div style="margin-bottom: 20px;">
+            <label>パスワード:</label><br>
+            <input type="password" name="password" required style="width: 100%; padding: 8px;">
+        </div>
+        <div>
+            <button type="submit" style="width: 100%; padding: 10px; cursor: pointer;">ログイン</button>
+        </div>
+    </form>
+
+    <hr style="margin: 20px 0;">
+    <p style="font-size: 0.9em;">
+        アカウントをお持ちでない方は <a th:href="@{/user/signup}">新規登録</a>
+    </p>
+</div>
+</body>
+</html>

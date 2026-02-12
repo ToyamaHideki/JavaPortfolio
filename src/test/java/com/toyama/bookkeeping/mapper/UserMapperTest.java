@@ -1,6 +1,7 @@
 package com.toyama.bookkeeping.mapper;
 
-import com.toyama.bookkeeping.entity.User;
+import com.toyama.bookkeeping.auth.mapper.UserMapper;
+import com.toyama.bookkeeping.auth.entity.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;

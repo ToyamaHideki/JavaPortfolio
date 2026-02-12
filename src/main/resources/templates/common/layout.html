@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <title th:text="${title} + ' - 家計簿アプリ'">タイトル</title>
+    <style>
+        nav ul { list-style: none; padding: 0; display: flex; gap: 15px; background: #f4f4f4; padding: 10px; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+<nav th:fragment="navbar">
+    <ul>
+        <li><a th:href="@{/home}">ホーム</a></li>
+        <li><a th:href="@{/user/detail}">登録内容照会/修正</a></li>
+        <li>
+            <form th:action="@{/logout}" method="post" style="display:inline;">
+                <button type="submit">ログアウト</button>
+            </form>
+        </li>
+    </ul>
+</nav>
+</body>
+</html>
